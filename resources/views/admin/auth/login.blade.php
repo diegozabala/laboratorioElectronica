@@ -39,3 +39,4 @@
 </div>
 
 </div>  
+@include ('admin.templates.partials.footer')

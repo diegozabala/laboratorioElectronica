@@ -66,6 +66,7 @@ $("#menu-toggle").click(function(e) {
 });
 
 $(function(){
+
     $('.button-checkbox').each(function(){
     var $widget = $(this),
       $button = $widget.find('button'),
@@ -121,7 +122,9 @@ $(function(){
       }
     }
     init();
-  });
+  });   
+
+});
 });
 
 }(jQuery);
