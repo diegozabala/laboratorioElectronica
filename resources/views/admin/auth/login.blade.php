@@ -1,3 +1,4 @@
+@include ('admin.templates.partials.navbar')
 
 <div class="container">
     
