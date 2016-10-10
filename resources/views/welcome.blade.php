@@ -1,45 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@include ('admin.templates.partials.navbar')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+<div class="container">
+    
+<div class="row" style="margin-top:40px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form role="form" method="POST" action="{{ url('/login') }}">
+             {{ csrf_field() }}
+                <fieldset>
+                    <h2>BIENVENIDO A LA PALOMERA!</h2>
+                    <hr class="colorgraph">
+                    
+                    <hr class="colorgraph">
+                    <div class="row">
+ 
+                    </div>
+                </fieldset>
+        </form>
+    </div>
+</div>
 
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-        </div>
-    </body>
-</html>
+</div>  
+@include ('admin.templates.partials.footer')
