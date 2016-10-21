@@ -12,11 +12,13 @@
 */
 
 Route::get('/', function () {
-	return view('admin/auth/login');
+	return view('inicioprueba');
 });
 
+/*
 Route::group(['prefix' => 'admin'], function (){
 
     Route::resource('users','UsersController');
 
 });
+*/
