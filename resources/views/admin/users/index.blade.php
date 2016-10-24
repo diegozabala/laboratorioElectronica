@@ -1,5 +1,5 @@
 
-@include ('admin.template.partials.nav')
+@include ('admin.templates.partials.navbar1')
 
 	<section class="section-login">
 		<div class="panel panel-default">
@@ -48,4 +48,5 @@
   </table>
 		</div>
 	</section>
-@include ('admin.template.partials.footer')
+
+@include ('admin.templates.partials.footer1')

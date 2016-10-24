@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 /**
-
  * @property string  nombre
  * @property string apellido
  * @property mixed cedula
@@ -17,7 +16,7 @@ class Estudiante extends Model
     protected $table="estudiantes";
     
     protected $fillable = [
-        'nombre', 'apellido', 'cedula','carrera','facultad',
+        'nombre', 'apellido', 'cedula','carrera',
     ];
     
     public function prestamos(){

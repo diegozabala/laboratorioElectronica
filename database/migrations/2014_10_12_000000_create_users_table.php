@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::statement("INSERT INTO `users` (`nombre`,`email`,`password`,`apellido`,`cedula`,`imagen`,`rol`) VALUES ('ingenieria','electronica@gmail.com','1234567','electronica','12345','user.png','admin')");
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Estudiante;
 
 class EstudiantesController extends Controller
 {
@@ -15,7 +16,8 @@ class EstudiantesController extends Controller
      */
     public function index()
     {
-        //
+        $estudiantes = Estudiante::OrderBy('nombre')->paginate(10);
+        return view('admin.estudiantes.index')->with('organizaciones',$organizaciones);
     }
 
     /**
@@ -36,7 +38,14 @@ class EstudiantesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estudiante = new Estudiante();
+        $estudiante->nombre=$request->nombre;
+        $estudiante->apellido=$request->apellido;
+        $estudiante->cedula = $request->cedula;
+        $estudiante->carrera = $request->carrera;
+
+        $estudiante->save();
+        return redirect()->route('solidario.orgs.index');
     }
 
     /**
@@ -58,7 +67,8 @@ class EstudiantesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estudiante = Estudiante();
+        return view('admin\estudiantes\edit',['estudiante'=>$estudiante]);
     }
 
     /**
@@ -70,7 +80,15 @@ class EstudiantesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $estudiante = Estudiante::find($id);
+        $estudiante->nombre = $request->nombre;
+        $estudiante->apellido = $request->apellido;
+        $estudiante->cedula = $request->cedula;
+        $estudiante->carrera = $request->carrera;
+
+        $estudiante->save();
+        return redirect()->route('electronica.estudiantes.index');
+
     }
 
     /**
@@ -81,6 +99,8 @@ class EstudiantesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $estudiante = Estudiante::find($id);
+        $estudiante->delete();
+        return redirect()->route('electronica.estudiantes.index');
     }
 }

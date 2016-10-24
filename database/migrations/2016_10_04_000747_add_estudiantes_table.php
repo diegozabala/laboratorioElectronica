@@ -19,7 +19,6 @@ class AddEstudiantesTable extends Migration
             $table->string('apellido');
             $table->integer('cedula')->unique();
             $table->string('carrera');
-            $table->string('facultad');
             $table->timestamps();
         });
     }
