@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $table="users";
-    protected $fillable = ['nombre', 'apellido', 'cedula','rol','id','password','created_at','email',];
+    protected $fillable = ['nombre', 'apellido', 'cedula','rol','id','imagen','password','created_at','email',];
 
     public function prestamos(){
         return $this->hasMany('App\Prestamo');

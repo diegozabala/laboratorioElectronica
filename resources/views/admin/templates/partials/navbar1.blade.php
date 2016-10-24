@@ -35,7 +35,7 @@
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
+        <nav class="navbar navbar-fixed-top" role="navigation">
           <!-- Sidebar toggle button-->
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
@@ -45,29 +45,27 @@
             <ul class="nav navbar-nav">
               <!--//////////////////////////////////// INICIO PERFIL DEL USUARIO//////////////////////////////////////////////////////-->
               <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="plugins/dist/img/iconoUsuarios.png" class="user-image" alt="User Image">
-                  <span class="hidden-xs">xxxxxxxxxxxxxxxx</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="plugins/dist/img/iconoUsuarios.png" class="img-circle" alt="User Image">
-                    <p>
-                      xxxxxxxxxxxxxxxxxxxxx
-                      <small>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</small>
-                    </p>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Salir</a>
-                    </div>
-                  </li>
-                </ul>
+                @if(Auth::user())
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;{{Auth::user()->nombre}}&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <!-- User image -->
+                      <li class="user-header">
+                        <img src="plugins/dist/img/iconoUsuarios.png" class="img-circle" alt="User Image">
+                        <p>
+                          <small>Administrador Del Laboratorio</small>
+                        </p>
+                      </li>
+                      <!-- Menu Footer-->
+                      <li class="user-footer">
+                        <div class="pull-left">
+                          <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                        </div>
+                        <div class="pull-right">
+                          <a href="{{route('electronica.auth.logout')}}" class="btn btn-default btn-flat">Salir</a>
+                        </div>
+                      </li>
+                    </ul>
+                @endif 
               </li>
               <!--//////////////////////////////////// FIN PERFIL DEL USUARIO//////////////////////////////////////////////////////-->
             </ul>
@@ -85,7 +83,10 @@
               <img src="plugins/dist/img/iconoUsuarios.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              @if(Auth::user())
+                <p>{{Auth::user()->nombre . ' ' . Auth::user()->apellido}}</p>
+              @endif 
+              
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>

@@ -19,13 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('cedula')->unique();
+            $table->string('imagen');
             $table->enum('rol', ['admin','auxiliar'])->default('auxiliar');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
-
-        DB::statement("INSERT INTO `users` (`nombre`,`email`,`password`,`apellido`,`cedula`,`imagen`,`rol`) VALUES ('ingenieria','electronica@gmail.com','1234567','electronica','12345','user.png','admin')");
+        $password=bcrypt('123456789');
+        DB::statement("INSERT INTO `users` (`nombre`,`email`,`password`,`apellido`,`cedula`,`imagen`,`rol`) VALUES ('ingenieria','electronica@gmail.com','$password','electronica','12345','user.png','admin')");
     }
 
     /**
