@@ -18,7 +18,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::OrderBy('name','ASC')->paginate(15);
-        return view('admin.users.index')->with('users',$users);
+        return view('admin/users/index')->with('users',$users);
     }
 
     /**
@@ -39,6 +39,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+
         if ($file=$request->file('imagen')){
             $file=$request->file('imagen');
             $name= 'usuario_'.time(). ".".$file->getClientOriginalExtension();
@@ -48,14 +49,13 @@ class UsersController extends Controller
             $usuario= new User($request->all());
             $usuario->rol=$request->rol;
             $usuario->imagen=$name;
-            $usuario->nombre=$request->nombre;
+            $usuario->name=$request->name;
             $usuario->apellido=$request->apellido;
             $usuario->cedula=$request->cedula;
             $usuario->password=bcrypt($request->password);
             $usuario->save();
         }
         return redirect()->route('admin.users.index');
-        
     }
 
     /**
@@ -113,7 +113,7 @@ class UsersController extends Controller
 
         return redirect()->route('electronica.users.index');
     }
-
+}
     /**
      * Remove the specified resource from storage.
      *

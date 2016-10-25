@@ -32,9 +32,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/electronica';
-    protected $loginPath = '/electronica/auth/login';
-
+    protected $redirectTo = '/';
 
     public function __construct(Guard $auth)
     {
@@ -44,6 +42,9 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'name' => 'required',
+            'apellido' => 'required',
+            'cedula' => 'required|min:7',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -57,8 +58,4 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
-    protected function getLogin(){
-       return view('login');
-     }
 }

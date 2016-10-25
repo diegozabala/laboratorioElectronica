@@ -16,17 +16,17 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();            
-            $table->string('nombre');
+            $table->string('name');
             $table->string('apellido');
             $table->integer('cedula')->unique();
             $table->string('imagen');
-            $table->enum('rol', ['admin','auxiliar'])->default('auxiliar');
+            $table->enum('rol', ['Administrador','Auxiliar'])->default('Auxiliar');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
         $password=bcrypt('123456789');
-        DB::statement("INSERT INTO `users` (`nombre`,`email`,`password`,`apellido`,`cedula`,`imagen`,`rol`) VALUES ('ingenieria','electronica@gmail.com','$password','electronica','12345','user.png','admin')");
+        DB::statement("INSERT INTO `users` (`name`,`email`,`password`,`apellido`,`cedula`,`imagen`,`rol`) VALUES ('ingenieria','electronica@gmail.com','$password','electronica','12345','user.png','Administrador')");
     }
 
     /**
